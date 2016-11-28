@@ -1,9 +1,13 @@
 {
   "name": "Oscar",
-  "version": "1.0",
+  "version": "1.0.1",
   "description": "Example theme.",
   "main": "index.js",
   "scripts": {
+    "build": "npm run build:bundle && npm run styles:minify && npm run scripts:minify",
+    "build:bundle": "concat-cli -f assets/source/js/*.js -o assets/dist/bundle.js && concat-cli -f assets/source/css/*.css -o assets/dist/bundle.css",
+    "styles:minify": "cleancss -o assets/dist/bundle.css assets/dist/bundle.css",
+    "scripts:minify": "uglifyjs -c -m -o assets/dist/bundle.js assets/dist/bundle.js"
   },
   "repository": {
     "type": "git",
